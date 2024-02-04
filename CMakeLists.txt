@@ -5,5 +5,7 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_executable(SPP main.cpp)
 
-add_executable(104174 Codeforces/104174.cpp)
-add_executable(104174-2 Codeforces/104174-2.cpp)
+add_executable(104174 Codeforces/104174-C.cpp)
+add_executable(104174-2 Codeforces/104174-C-2.cpp)
+add_executable(B "Когнитивные технологии/B.cpp")
+add_executable(1915-F Codeforces/1915-F.cpp)
