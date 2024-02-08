@@ -21,7 +21,7 @@ int dfs(int v, int p = -1) {
         if (u != p) {
             int tmp = dfs(u, v);
             s += tmp;
-            ans = (ans - p2[tmp] * (v + 1)) % MOD;
+            ans = (ans + MOD - p2[tmp] * (v + 1)) % MOD;
         }
     }
 //    cout << v + 1 << ' ' << s << '\n';
