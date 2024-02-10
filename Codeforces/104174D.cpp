@@ -38,7 +38,7 @@ void dfs(int v) {
     for (int i = 1; i < g[v].size(); ++i) {
         for (int j = 0; j < k; ++j) {
             pref[i][j] = (pref[i - 1][j] * ((dp[g[v][i]][0] + dp[g[v][i]][1]) % MOD)) % MOD;
-            if (i - 1 >= 0) {
+            if (j - 1 >= 0) {
                 pref[i][j] = (pref[i][j] + (pref[i - 1][j - 1] * dp[g[v][i]][0]) % MOD) % MOD;
             }
         }
