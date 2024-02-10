@@ -18,3 +18,5 @@ add_executable(1927-E Codeforces/1927-E.cpp)
 add_executable(1927-F Codeforces/1927-F.cpp)
 add_executable(1862-A Codeforces/1862-A.cpp)
 add_executable(A hse-2023/A.cpp)
+
+add_executable(1 tmp/1.cpp)
