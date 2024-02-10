@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.27)
+cmake_minimum_required(VERSION 3.22)
 project(SPP)
 
 set(CMAKE_CXX_STANDARD 20)
@@ -17,3 +17,4 @@ add_executable(1927-D Codeforces/1927-D.cpp)
 add_executable(1927-E Codeforces/1927-E.cpp)
 add_executable(1927-F Codeforces/1927-F.cpp)
 add_executable(1862-A Codeforces/1862-A.cpp)
+add_executable(A hse-2023/A.cpp)
