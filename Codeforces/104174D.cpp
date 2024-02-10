@@ -48,8 +48,6 @@ void dfs(int v) {
         dp[v][1] = (dp[v][1] + pref[g[v].size() - 1][i]) % MOD;
     }
 
-
-
 //    for (int i = 0; i < g[v].size(); ++i) {
 //        for (int j = i + 1; j < g[v].size(); ++j) {
 //            int u1 = g[v][i];
