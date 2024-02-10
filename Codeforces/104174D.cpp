@@ -20,7 +20,7 @@ void dfs(int v) {
     dp[v][0] = 1;
     dp[v][1] = 0;
 
-    if (g[v].size() == 0) {
+    if (g[v].empty()) {
         return;
     }
 
