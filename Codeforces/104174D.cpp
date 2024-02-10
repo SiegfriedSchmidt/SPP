@@ -33,13 +33,13 @@ void dfs(int v) {
         pref[0][j] = 0;
     }
 
-    pref[0][0] = dp[g[v][0]][0] + dp[g[v][0]][1];
+    pref[0][0] = (dp[g[v][0]][0] + dp[g[v][0]][1]) % MOD;
     pref[0][1] = dp[g[v][0]][0];
     for (int i = 1; i < g[v].size(); ++i) {
         for (int j = 0; j < k; ++j) {
-            pref[i][j] = (pref[i - 1][j] * (dp[g[v][i]][0] + dp[g[v][i]][1])) % MOD;
+            pref[i][j] = (pref[i - 1][j] * ((dp[g[v][i]][0] + dp[g[v][i]][1]) % MOD)) % MOD;
             if (i - 1 >= 0) {
-                pref[i][j] = (pref[i][j] + pref[i - 1][j - 1] * dp[g[v][i]][0]) % MOD;
+                pref[i][j] = (pref[i][j] + (pref[i - 1][j - 1] * dp[g[v][i]][0]) % MOD) % MOD;
             }
         }
     }
