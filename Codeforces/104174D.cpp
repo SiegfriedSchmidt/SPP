@@ -79,7 +79,7 @@ signed main() {
     }
 
     dfs(0);
-    cout << dp[0][0] + dp[0][1];
+    cout << (dp[0][0] + dp[0][1]) % MOD;
 
     return 0;
 }
