@@ -20,3 +20,4 @@ add_executable(1862-A Codeforces/1862A.cpp)
 add_executable(A hse-2023/A.cpp)
 
 add_executable(1 tmp/1.cpp)
+add_executable(1902C Codeforces/1902C.cpp)
