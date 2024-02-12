@@ -21,3 +21,5 @@ add_executable(A hse-2023/A.cpp)
 
 add_executable(1 tmp/1.cpp)
 add_executable(1902C Codeforces/1902C.cpp)
+add_executable(1881D Codeforces/1881D.cpp)
+add_executable(prime_numbers tmp/prime_numbers.cpp)
