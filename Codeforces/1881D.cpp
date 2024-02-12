@@ -77,7 +77,7 @@ signed main() {
 
         bool flag = true;
 
-        for (auto [p, c] : count_primes) {
+        for (auto [p, c]: count_primes) {
             if (c % n != 0) {
                 flag = false;
             }
