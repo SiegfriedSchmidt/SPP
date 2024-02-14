@@ -11,6 +11,20 @@ using namespace std;
 #define int long long
 
 const int MAXN = 2 * 1e5 + 1;
+vector<set<int>> g(MAXN);
+bool used[MAXN];
+
+bool dfs(int v) {
+    used[v] = true;
+    bool flag = false;
+
+    for (auto u: g[v]) {
+        if (!used[u]) {
+            flag |= dfs(u);
+        }
+    }
+    return flag;
+}
 
 signed main() {
     cin.tie(nullptr);
@@ -22,73 +36,43 @@ signed main() {
         int n, k;
         cin >> n >> k;
 
-        bool flag = true;
-        set<int> pos[n + 1];
-        int tmp = -1;
+        for (int i = 0; i < n; ++i) {
+            g[i].clear();
+        }
+        fill(used, used + n, false);
+
         for (int i = 0; i < k; ++i) {
+            int p = -1;
             for (int j = 0; j < n; ++j) {
                 int x;
                 cin >> x;
-                if (j == 0) {
-                    if (i == 0) {
-                        tmp = x;
+                --x;
+                if (j != 0) {
+                    if (p != -1) {
+                        g[p].insert(x);
                     }
 
-                    continue;
-                }
-
-                if (i == 0 || (i == 1 && x == tmp)) {
-                    pos[x].insert(j - 1);
-                    pos[x].insert(j);
-                    pos[x].insert(j + 1);
-                    continue;
-                }
-
-                if (!pos[x].contains(j)) {
-                    flag = false;
-                } else {
-                    pos[x].erase(j - 2);
-                    pos[x].erase(j + 2);
+                    p = x;
                 }
             }
         }
 
-
-        if (flag && k != 1) {
-            set<int> set2;
-            for (int i = 1; i <= n; ++i) {
-                for (auto p: pos[i]) {
-                    set2.insert(p);
-                }
+        int cycle = false;
+        for (int i = 0; i < n; ++i) {
+            if (!used[i]) {
+                cycle |= dfs(i);
             }
-
-            for (int i = 0; i < n; ++i) {
-                if (!set2.contains(i)) {
-                    flag = false;
-                    break;
-                }
-            }
-
         }
 
+        if (cycle) {
+            cout << "NO\n";
+        } else {
+            cout << "YES\n";
+        }
 
-        cout << ((flag || k == 1) ? "YES" : "NO") << '\n';
 
     }
 
     return 0;
 }
 
-/*
-1
-4 4
-1 2 3 4
-2 3 1 4
-3 2 1 4
-4 2 3 1
-
- 1
- 1 1
- 1
-
- */
