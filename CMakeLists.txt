@@ -42,3 +42,8 @@ add_executable(1929B Codeforces/1929/1929B.cpp)
 add_executable(1929C Codeforces/1929/1929C.cpp)
 add_executable(1929D Codeforces/1929/1929D.cpp)
 add_executable(1929E Codeforces/1929/1929E.cpp)
+
+add_executable(IOIP_A ИОИП/IOIP_A.cpp)
+add_executable(IOIP_B ИОИП/IOIP_B.cpp)
+add_executable(IOIP_C ИОИП/IOIP_C.cpp)
+add_executable(IOIP_D ИОИП/IOIP_D.cpp)
