@@ -28,14 +28,14 @@ signed main() {
     cout << hex << s << '\n';
     cout << hex << d << '\n';
 
-    string s1 = "d7695fc640a690b5f17a6b39";
+    string s1 = "00100000004000000000000000000003FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5D1008F93C2E742";
 //    string s1 = "abc0";
     int sum1 = 0;
     for (auto c : s1) {
         if (c >= '0' && c <= '9') {
             sum1 += c - '0';
         } else {
-            sum1 += c - 'a' + 10;
+            sum1 += c - 'A' + 10;
         }
     }
 
