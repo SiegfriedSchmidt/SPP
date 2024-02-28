@@ -1,3 +1,6 @@
+// https://codeforces.com/problemset/problem/1056/C
+// 28.02.2024
+
 #include <bitset>
 #include <iostream>
 #include <cmath>
@@ -18,7 +21,7 @@ signed main() {
     int n, m;
     cin >> n >> m;
 
-    vector<int> p(n);
+    vector<int> p(n * 2);
     set<pair<int, int>, greater<>> set1;
     for (int i = 0; i < n * 2; ++i) {
         cin >> p[i];
@@ -57,7 +60,7 @@ signed main() {
                 auto p1 = *map1.begin();
                 int a = p1.first;
                 int b = p1.second;
-                map1.erase(map1.begin());
+                map1.erase(a);
                 map1.erase(b);
                 set1.erase({p[a], a});
                 set1.erase({p[b], b});
@@ -80,8 +83,9 @@ signed main() {
                 set1.erase({p[b], b});
                 map1.erase(b);
                 map1.erase(a);
-                cout << b << endl;
+                cout << b + 1 << endl;
             } else {
+                set1.erase({p[move], move});
                 t = 1;
             }
         }

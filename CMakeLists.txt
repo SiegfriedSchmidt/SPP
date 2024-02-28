@@ -67,3 +67,4 @@ add_executable(1769C2 Codeforces/1769C2.cpp)
 
 add_executable(1919C Codeforces/1919C.cpp)
 add_executable(1733C Codeforces/1733C.cpp)
+add_executable(1056C Codeforces/1056C.cpp)
