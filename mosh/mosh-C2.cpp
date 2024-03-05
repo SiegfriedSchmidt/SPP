@@ -18,7 +18,7 @@ signed main() {
     cin.tie(nullptr);
     ios_base::sync_with_stdio(false);
 
-    freopen("/mnt/d/Users/Matvei/Developer/Projects/SPP/mosh/tests/c0.txt", "r", stdin);
+    freopen("/mnt/d/Users/Matvei/Developer/Projects/SPP/mosh/tests/c2.txt", "r", stdin);
     freopen("/mnt/d/Users/Matvei/Developer/Projects/SPP/mosh/output.txt", "w", stdout);
 
     int t;
@@ -125,36 +125,19 @@ signed main() {
         for (auto val: ans) {
             cout << val + 1 << ' ';
         }
+        cout << '\n';
 
-        int ans_sum = 0;
-        for (auto val: ans) {
-            ans_sum += a[val].first + a[val].second;
-        }
-
-        for (auto eq: equals) {
-            mx += a[eq].first + a[eq].second;
-        }
-
-        cout << '\n' << ans_sum << ' ' << mx << '\n';
+//        int ans_sum = 0;
+//        for (auto val: ans) {
+//            ans_sum += a[val].first + a[val].second;
+//        }
+//
+//        for (auto eq: equals) {
+//            mx += a[eq].first + a[eq].second;
+//        }
+//
+//        cout << ans_sum << ' ' << mx << "\n\n";
     }
-
 
     return 0;
 }
-
-/*
-7610808
-8092606
-7712310
-7720888
-7973486
-7661866
-7006172
- */
-
-/*
-4
-3 3
-2 3
-0 1
- */

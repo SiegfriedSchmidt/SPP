@@ -55,14 +55,14 @@ signed main() {
             }
         }
 
-//        cout << ans.size() << '\n';
+        cout << ans.size() << '\n';
         int sm = 0;
         for (auto val : ans) {
-//            cout << val + 1 << ' ';
+            cout << val + 1 << ' ';
             sm += a[val].first + a[val].second;
         }
-        cout << sm;
-        cout << '\n';
+        cout << '\n' << sm;
+        cout << "\n\n";
     }
 
 
