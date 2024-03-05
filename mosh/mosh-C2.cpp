@@ -8,10 +8,11 @@ using namespace std;
 
 #define int long long
 const int MAXV = 1e6;
+const int MAXN = 100;
 int dp_neg[MAXV];
 int dp_pos[MAXV];
-pair<int, int> pr_neg[MAXV];
-pair<int, int> pr_pos[MAXV];
+int pr_neg[MAXV][100];
+int pr_pos[MAXV][100];
 
 signed main() {
     cin.tie(nullptr);
@@ -30,10 +31,14 @@ signed main() {
         vector<pair<int, pair<int, int>>> diff_neg;
         vector<pair<int, pair<int, int>>> diff_pos;
 
-        fill(dp_neg, dp_neg + MAXV, 0);
-        fill(dp_pos, dp_pos + MAXV, 0);
-        fill(pr_neg, pr_neg + MAXV, make_pair(-1, -1));
-        fill(pr_pos, pr_pos + MAXV, make_pair(-1, -1));
+        for (int i = 0; i < MAXV; ++i) {
+            dp_neg[i] = 0;
+            dp_pos[i] = 0;
+            for (int j = 0; j < MAXN; ++j) {
+                pr_neg[i][j] = -1;
+                pr_pos[i][j] = -1;
+            }
+        }
 
         for (int i = 0; i < n; ++i) {
             cin >> a[i].first;
@@ -58,7 +63,7 @@ signed main() {
                         int v = dp_pos[i - diff_pos[j].second.first] + diff_pos[j].second.second;
                         if (v > dp_pos[i]) {
                             dp_pos[i] = v;
-                            pr_pos[i] = {i - diff_pos[j].second.first, diff_pos[j].first};
+                            pr_pos[i][j] = i - diff_pos[j].second.first;
                         }
                     }
                 }
@@ -72,7 +77,7 @@ signed main() {
                         int v = dp_neg[i - diff_neg[j].second.first] + diff_neg[j].second.second;
                         if (v > dp_neg[i]) {
                             dp_neg[i] = v;
-                            pr_neg[i] = {i - diff_neg[j].second.first, diff_neg[j].first};
+                            pr_neg[i][j] = i - diff_neg[j].second.first;
                         }
                     }
                 }
@@ -94,38 +99,43 @@ signed main() {
         vector<int> ans;
 
         int pr = mx_idx;
-        cout << pr << '\n';
-        while (pr != -1) {
-            if (pr_pos[pr].first != -1) {
-                cout << pr_pos[pr].first << ' ' << pr_pos[pr].second << '\n';
-                ans.emplace_back(pr_pos[pr].second);
+        for (int j = MAXN - 1; j >= 0; --j) {
+            if (pr_pos[pr][j] != -1) {
+                ans.emplace_back(diff_pos[j].first);
+                pr = pr_pos[pr][j];
             }
-            pr = pr_pos[pr].first;
         }
 
         pr = mx_idx;
-        while (pr != -1) {
-            if (pr_neg[pr].first != -1) {
-                 ans.emplace_back(pr_neg[pr].second);
+        for (int j = MAXN - 1; j >= 0; --j) {
+            if (pr_neg[pr][j] != -1) {
+                ans.emplace_back(diff_neg[j].first);
+                pr = pr_neg[pr][j];
             }
-            pr = pr_neg[pr].first;
         }
 
         for (auto eq: equals) {
             ans.emplace_back(eq);
         }
 
-        for (auto val : ans) {
+        sort(ans.begin(), ans.end());
+
+        cout << ans.size() << '\n';
+
+        for (auto val: ans) {
             cout << val + 1 << ' ';
+        }
+
+        int ans_sum = 0;
+        for (auto val: ans) {
+            ans_sum += a[val].first + a[val].second;
         }
 
         for (auto eq: equals) {
             mx += a[eq].first + a[eq].second;
         }
 
-
-
-//        cout << mx << '\n';
+        cout << '\n' << ans_sum << mx << '\n';
     }
 
 
