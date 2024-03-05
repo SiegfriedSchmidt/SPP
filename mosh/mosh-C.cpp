@@ -12,7 +12,7 @@ signed main() {
     cin.tie(nullptr);
     ios_base::sync_with_stdio(false);
 
-    freopen("/mnt/d/Users/Matvei/Developer/Projects/SPP/mosh/tests/c0.txt", "r", stdin);
+    freopen("/mnt/d/Users/Matvei/Developer/Projects/SPP/mosh/tests/c1.txt", "r", stdin);
     freopen("/mnt/d/Users/Matvei/Developer/Projects/SPP/mosh/output.txt", "w", stdout);
 
     int t;
