@@ -135,7 +135,7 @@ signed main() {
             mx += a[eq].first + a[eq].second;
         }
 
-        cout << '\n' << ans_sum << mx << '\n';
+        cout << '\n' << ans_sum << ' ' << mx << '\n';
     }
 
 
