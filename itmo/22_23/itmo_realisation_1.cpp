@@ -5,13 +5,14 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <set>
 
 using namespace std;
 
 #define int long long
 
 struct Vertex {
-    map<string, string> commit;
+    map<string, set<string>> commit;
 };
 
 signed main() {
@@ -53,7 +54,7 @@ signed main() {
 
                 Vertex new_vertex = graph[head];
                 for (auto [file, hash]: add) {
-                    new_vertex.commit[file] = hash;
+                    new_vertex.commit[file].insert(hash);
                 }
                 add.clear();
 
@@ -102,11 +103,28 @@ signed main() {
                 }
 
                 bool conflicts = false;
-                for (auto [file, hash]: graph[head].commit) {
-                    if (graph[branch[merge_branch]].commit.contains(file) &&
-                        graph[branch[merge_branch]].commit[file] != hash) {
-                        conflicts = true;
-                        break;
+                for (auto [file, set_hash]: graph[head].commit) {
+                    if (graph[branch[merge_branch]].commit.contains(file)) {
+                        bool diff_cur_to_merge = false;
+                        for (const auto &hash: set_hash) {
+                            if (!graph[branch[merge_branch]].commit[file].contains(hash)) {
+                                diff_cur_to_merge = true;
+                                break;
+                            }
+                        }
+
+                        bool diff_merge_to_cur = false;
+                        for (const auto &hash: graph[branch[merge_branch]].commit[file]) {
+                            if (!set_hash.contains(hash)) {
+                                diff_merge_to_cur = true;
+                                break;
+                            }
+                        }
+
+                        if (diff_cur_to_merge && diff_merge_to_cur) {
+                            conflicts = true;
+                            break;
+                        }
                     }
                 }
 
@@ -116,8 +134,10 @@ signed main() {
                 }
 
                 Vertex new_vertex = graph[head];
-                for (auto [file, hash]: graph[branch[merge_branch]].commit) {
-                    new_vertex.commit[file] = hash;
+                for (auto [file, set_hash]: graph[branch[merge_branch]].commit) {
+                    for (const auto &hash: set_hash) {
+                        new_vertex.commit[file].insert(hash);
+                    }
                 }
 
                 graph.emplace_back(new_vertex);
