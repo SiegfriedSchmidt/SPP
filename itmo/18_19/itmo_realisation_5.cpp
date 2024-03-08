@@ -18,6 +18,7 @@ signed main() {
     cin >> n;
 
     vector<set<int>> obj(n);
+    map<int, vector<int>> prop_to_obj;
     for (int i = 0; i < n; ++i) {
         int k;
         cin >> k;
@@ -25,6 +26,7 @@ signed main() {
             int prop;
             cin >> prop;
             obj[i].insert(prop);
+            prop_to_obj[prop].emplace_back(i);
         }
     }
 
@@ -35,9 +37,10 @@ signed main() {
         int idx;
         cin >> t >> idx;
         if (t == '-') {
-            for (auto &o : obj) {
-                o.erase(idx);
+            for (auto obj_idx : prop_to_obj[idx]) {
+                obj[obj_idx].erase(idx);
             }
+            prop_to_obj[idx].clear();
         } else {
             --idx;
             cout << obj[idx].size() << '\n';
