@@ -1,7 +1,13 @@
 cmake_minimum_required(VERSION 3.22)
 project(SPP)
 
-set(CMAKE_CXX_STANDARD 20)
+##if(NOT CMAKE_BUILD_TYPE)
+#set(CMAKE_BUILD_TYPE Release)
+##endif()
+#
+#set(CMAKE_CXX_FLAGS "-Wall -Wextra")
+#set(CMAKE_CXX_FLAGS_DEBUG "-g")
+#set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 
 add_executable(SPP main.cpp)
 
@@ -95,3 +101,6 @@ add_executable(PP_A Предпроф/PP_A.cpp)
 add_executable(PP_B Предпроф/PP_B.cpp)
 add_executable(y1 yandex/1.cpp)
 add_executable(y2 yandex/2.cpp)
+add_executable(3ya yandex/3ya.cpp)
+add_executable(4ya yandex/4ya.cpp)
+add_executable(5ya yandex/5ya.cpp)
